@@ -1,0 +1,29 @@
+{
+  "name": "apinode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "express-validation": "^1.0.2",
+    "helmet": "^3.14.0",
+    "http-status": "^1.2.0",
+    "joi": "^14.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.3",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "validator": "^10.8.0"
+  }
+}
