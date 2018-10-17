@@ -1,6 +1,6 @@
-const devConfig = { MONGO_URL: 'mongodb://localhost/makeanodejsapi-dev', JWT_SECRET: "thisisasecret", };
-const testConfig = { MONGO_URL: 'mongodb://localhost/makeanodejsapi-test', };
-const prodConfig = { MONGO_URL: 'mongodb://localhost/makeanodejsapi-prod', JWT_SECRET: "thisisasecret",};
+const devConfig = { MONGO_URL: 'mongodb://heroku_vgs84qlk:i8il8ldlc41q4sm52r9qk3um6n@ds135689.mlab.com:35689/heroku_vgs84qlk', JWT_SECRET: "thisisasecret", };
+const testConfig = { MONGO_URL: 'mongodb://heroku_vgs84qlk:i8il8ldlc41q4sm52r9qk3um6n@ds135689.mlab.com:35689/heroku_vgs84qlk', };
+const prodConfig = { MONGO_URL: 'mongodb://heroku_vgs84qlk:i8il8ldlc41q4sm52r9qk3um6n@ds135689.mlab.com:35689/heroku_vgs84qlk', JWT_SECRET: "thisisasecret",};
 const defaultConfig = {
 PORT: process.env.PORT || 3000,
 };
