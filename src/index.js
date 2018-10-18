@@ -21,7 +21,9 @@ app.listen(constans.PORT, err => {
         Server running on port: ${constans.PORT} 
         --- 
         Running on ${process.env.NODE_ENV}
-        --- 
+        ---
+        MongoDB on ${constans.MONGO_URL} 
+        ---
         Make something great!`);
     }
 })

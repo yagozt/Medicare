@@ -21,19 +21,19 @@ const UserSchema = new Schema({
             message: '{VALUE} is not a valid email!',
         },
     },
-    firstName: {
+    nome: {
         type: String,
         required: [true, 'FirstName is required!'],
         trim: true,
     },
-    lastName: {
+    nomeMae: {
         type: String,
         required: [true, 'LastName is required!'],
         trim: true,
     },
-    userName: {
-        type: String,
-        required: [true, 'UserName is required!'],
+    dataNascimento: {
+        type: Date,
+        required: [true, 'Data de nascimento é necessário!'],
         trim: true,
         unique: true,
     },
@@ -48,6 +48,28 @@ const UserSchema = new Schema({
             },
             message: '{VALUE} is not a valid password!',
         },
+    },
+    documento: {
+        type: String,
+        trim: true,
+        required: [true, "Documento é necessário!"]
+    },
+    rg: {
+        type: String,
+        trim: true
+    },
+    endereco: {
+        type: String
+    },
+    descricao: {
+        type: String
+    },
+    tipo: {
+        type: Number
+    },
+    dataCadastro: {
+        type: Date,
+        default: Date.now
     }
 });
 
@@ -75,14 +97,14 @@ UserSchema.methods = {
     toAuthJSON() {
         return {
             _id: this._id,
-            userName: this.userName,
+            email: this.email,
             token: `Bearer ${this.createToken()}`,
         };
     },
     toJSON() {
         return {
             _id: this._id,
-            userName: this.userName,
+            email: this.email,
         };
     }
 };
