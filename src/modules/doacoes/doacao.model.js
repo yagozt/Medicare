@@ -6,10 +6,10 @@ const DoacaoSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    medicamento: {
-        type: Schema.Types.ObjectId,
-        ref: "Medicamento",
+    nomeMedicamento: {
+        type: String
     },
+    tarja: String,
     quantidade: Number,
     dataValidade: {
         type: Date,
