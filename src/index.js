@@ -11,7 +11,7 @@ const app = express();
 middlewareConfig(app);
 
 app.get('/', (req, res) => {
-    res.send("Hello World");
+    res.send("Welcome to Medicare Webapi");
 })
 apiRoutes(app);
 app.listen(constans.PORT, err => {
