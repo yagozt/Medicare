@@ -33,9 +33,7 @@ const UserSchema = new Schema({
     },
     dataNascimento: {
         type: Date,
-        required: [true, 'Data de nascimento é necessário!'],
-        trim: true,
-        unique: true,
+        required: [true, 'Data de nascimento é necessário!']
     },
     password: {
         type: String,

@@ -2,7 +2,7 @@ const User = require('./user.model'),
 HTTPStatus = require('http-status');
 
 module.exports = { 
-    async signUp(req, res) {
+    async cadastrar(req, res) {
         try {
             const user = await User.create(req.body);
             return res.status(HTTPStatus.CREATED).json(user.toAuthJSON());
