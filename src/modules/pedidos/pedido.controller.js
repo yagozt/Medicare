@@ -30,12 +30,20 @@ module.exports = {
         }
     },
 
-    listarPorId(req, res) {
+    async listarPorId(req, res) {
         try {
-            console.log(`Buscar por id: ${req.params.id}`)
-            const pedidos = Pedido.findById(req.params.id).pedidos;
-            console.log
+            const pedidos = await Pedido.findById(req.params.id);
             return res.status(HTTPStatus.OK).json(pedidos);
+        } catch (e) {
+            console.log(e);
+            return res.status(HTTPStatus.BAD_REQUEST).json(e);
+        }
+    },
+
+    async deletarPedido(req, res) {
+        try {
+            await Pedido.findByIdAndDelete(req.params.id);
+            return res.status(HTTPStatus.NO_CONTENT).json();
         } catch (e) {
             console.log(e);
             return res.status(HTTPStatus.BAD_REQUEST).json(e);
