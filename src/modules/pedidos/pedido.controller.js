@@ -17,7 +17,6 @@ module.exports = {
             const pedidos = await Pedido.find().populate('user');
             return res.status(HTTPStatus.OK).json(pedidos);
         } catch (e) {
-            console.log(e);
             return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(e);
         }
     },
