@@ -42,8 +42,12 @@ module.exports = {
 
     async deletarPedido(req, res) {
         try {
-            await Pedido.findByIdAndDelete(req.params.id);
-            return res.status(HTTPStatus.NO_CONTENT).json();
+            const pedido = await Pedido.findById(req.params.id);
+            if (!pedido.user.equals(req.user._id))
+                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            
+            pedido.remove();
+            return res.sendStatus(HTTPStatus.NO_CONTENT);
         } catch (e) {
             console.log(e);
             return res.status(HTTPStatus.BAD_REQUEST).json(e);

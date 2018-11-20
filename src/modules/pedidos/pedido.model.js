@@ -9,6 +9,16 @@ const PedidoSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    dataCadastro: {
+        type: Date,
+        default: Date.now
+    },
+    dataValidacao: Date,
+    status: {
+        type: String,
+        enum: ['PENDENTE', 'RECUSADO', 'ACEITO', 'ENTREGUE', 'CANCELADO'],
+        default: 'PENDENTE'
     }
 });
 
