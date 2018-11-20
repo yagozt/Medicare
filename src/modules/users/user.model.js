@@ -63,7 +63,9 @@ const UserSchema = new Schema({
         type: String
     },
     tipo: {
-        type: Number
+        type: String,
+        enum: ['CLIENTE', 'FARMACEUTICO', 'ADMIN'],
+        required: [true, 'Tipo do usuário é obrigatório']
     },
     dataCadastro: {
         type: Date,
@@ -77,6 +79,16 @@ UserSchema.pre('save', function(next) {
     }
     return next();
 });
+
+UserSchema.statics = {
+    createUsuario(args) {
+        if(!isNaN(args.tipo)) {
+            const values = UserSchema.path('tipo').enumValues;
+            args.tipo = values[args.tipo];
+        }
+        return this.create(args);
+    }
+}
 UserSchema.methods = {
     _hashPassword(password) {
         return hashSync(password);
