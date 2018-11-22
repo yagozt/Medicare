@@ -18,6 +18,16 @@ var DoacaoSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    status: {
+        type: String,
+        enum: ['PENDENTE', 'RECUSADO', 'ACEITO', 'CANCELADO'],
+        default: 'PENDENTE'
+    },
+    dataValidacao: Date,
+    dataCadastro: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 module.exports = mongoose.model("Doacao", DoacaoSchema);
