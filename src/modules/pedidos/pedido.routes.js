@@ -8,7 +8,7 @@ routes.post('/', authJwt, pedidoController.cadastrar);
 routes.get('/', pedidoController.listarTodos);
 routes.get('/user', authJwt, pedidoController.listarPorUserId);
 routes.get('/:id', pedidoController.listarPorId);
-routes.delete('/:id', authJwt, pedidoController.deletarPedido)
-//routes.post('/:id/validar', pedidoController.validarPedido)
+routes.delete('/:id', authJwt, pedidoController.deletarPedido);
+routes.post('/:id/atualizar', authJwt, pedidoController.atualizarSituacaoPedido);
 
 module.exports = routes;

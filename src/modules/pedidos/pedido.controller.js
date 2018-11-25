@@ -52,5 +52,22 @@ module.exports = {
             console.log(e);
             return res.status(HTTPStatus.BAD_REQUEST).json(e);
         }
+    },
+
+    async atualizarSituacaoPedido(req, res) {
+        try {
+            const pedido = await Pedido.findByIdAndUpdate(req.params.id, { status: req.body.status, dataValidacao: Date.now() }, { runValidators: true });
+            if (!pedido) {
+                return res.sendStatus(HTTPStatus.NOT_FOUND);
+            }
+            if (!pedido.user.equals(req.user._id)) {
+                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            }
+
+            res.status(HTTPStatus.OK).json(pedido);
+        } catch (error) {
+            console.log(error);
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
     }
 }
