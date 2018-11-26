@@ -21,31 +21,31 @@ Método responsavel por efetuar o login
 ### Doação
 
 Método responsavel por cadastrar uma doação. Autenticação obrigatória.
-> POST api/v1/doacoes
+> **POST** api/v1/doacoes
 
 Método responsavel por retornar todas a doações.
-> GET api/v1/doacoes
+> **GET** api/v1/doacoes
 
 Método responsavel por alterar a situação da doação.
-> POST api/v1/doacoes/{id}/atualizarSituacao'
+> **POST** api/v1/doacoes/{id}/atualizarSituacao'
 
 
 ### Pedido
 
 Método responsavel por cadastrar um pedido. Autenticação obrigatória.
-> POST api/v1/pedidos
+> **POST** api/v1/pedidos
 
 Método responsavel por listar os pedidos.
-> GET api/v1/pedidos
+> **GET** api/v1/pedidos
 
 Método responsavel por listar os pedidos de um usuário. Autenticação obrigatória
-> GET api/v1/pedidos/user
+> **GET** api/v1/pedidos/user
 
 Método responsavel por retornar um pedido.
-> GET api/v1/pedidos/{id}
+> **GET** api/v1/pedidos/{id}
 
 Método responsavel por deletar um pedido. Autenticação obrigatória
-> DELETE api/v1/pedidos/{id}
+> **DELETE** api/v1/pedidos/{id}
 
 Método responsavel por atualizar a situação de um pedido. Autenticação obrigatória
-> POST api/v1/pedidos/{id}/atualizar
+> **POST** api/v1/pedidos/{id}/atualizar
