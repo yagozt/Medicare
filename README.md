@@ -48,4 +48,4 @@ Método responsavel por deletar um pedido. Autenticação obrigatória
 > **DELETE** api/v1/pedidos/{id}
 
 Método responsavel por atualizar a situação de um pedido. Autenticação obrigatória
-> **POST** api/v1/pedidos/{id}/atualizar
+> **POST** api/v1/pedidos/{id}/atualizarSituacao
