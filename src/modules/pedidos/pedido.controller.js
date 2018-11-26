@@ -69,5 +69,21 @@ module.exports = {
             console.log(error);
             return res.status(HTTPStatus.BAD_REQUEST).json(error);
         }
-    }
+    },
+
+    async atualizarPedido(req, res) {
+        try {
+            const doacao = await Doacao.findById(req.params.id);
+            if (!doacao.user.equals(req.user._id))
+                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            
+            Object.keys(req.body).forEach(elem => doacao[elem] = req.body[elem]);
+
+            doacao.save();
+            return res.status(HTTPStatus.OK).json(doacao);
+        } catch (error) {
+            console.log(error);
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
 }
