@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 var DoacaoSchema = new mongoose.Schema({
     dataDoacao: {
         type: Date,
-        default: Date.now(),
     },
     quantidade: Number,
     dataValidade: {
@@ -28,6 +27,22 @@ var DoacaoSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
 });
+
+DoacaoSchema.statics = {
+    list({ skip = 0, limit = 5} = {}) {
+        return this.find()
+    },
+    createDoacao(args, user) {
+        return this.create({
+            ...args,
+            user
+        })
+    }
+}
 
 module.exports = mongoose.model("Doacao", DoacaoSchema);
