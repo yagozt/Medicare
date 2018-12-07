@@ -1,6 +1,6 @@
 const Router = require('express').Router,
-doacaoController = require('./doacao.controller'),
-authJwt = require('../../services/auth.services').authJwt;
+    doacaoController = require('./doacao.controller'),
+    authJwt = require('../../services/auth.services').authJwt;
 
 const routes = new Router();
 

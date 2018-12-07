@@ -1,6 +1,6 @@
 const Router = require('express').Router,
-pedidoController = require('./pedido.controller'),
-authJwt = require('../../services/auth.services').authJwt;
+    pedidoController = require('./pedido.controller'),
+    authJwt = require('../../services/auth.services').authJwt;
 
 const routes = new Router();
 
