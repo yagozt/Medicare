@@ -1,8 +1,8 @@
 const Router = require('express').Router,
-validate = require('express-validation'),
-userController = require('./user.controller'),
-userValidations = require('./user.validations'),
-{ authLocal, authJwt } = require('../../services/auth.services');
+    validate = require('express-validation'),
+    userController = require('./user.controller'),
+    userValidations = require('./user.validations'),
+    { authLocal, authJwt } = require('../../services/auth.services');
 
 const routes = new Router();
 
