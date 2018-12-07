@@ -1,10 +1,11 @@
 const Doacao = require('./doacao.model');
 const HTTPStatus = require('http-status');
+const query = require('querystring');
 
 module.exports = {
     async cadastrar(req, res) {
         try {
-            const doacao = await Doacao.create(req.body);
+            const doacao = await Doacao.createDoacao(req.body, req.user._id);
             return res.status(HTTPStatus.OK).json(doacao);
         }
         catch (error) {
@@ -33,5 +34,56 @@ module.exports = {
             console.log(error);
             return res.status(HTTPStatus.BAD_REQUEST).json(error);
         }
-    }
+    },
+
+    async listarPorUsuario(req, res) {
+        try {
+            const doacoes = await Doacao.find({ user: mongoose.Types.ObjectId(req.user.id) });
+            return res.status(HTTPStatus.OK).json(doacoes);
+        } catch (error) {
+            console.log(error);
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
+
+    async listarPorId(req, res) {
+        try {
+            const doacao = await Doacao.findById(req.params.id);
+            return res.status(HTTPStatus.OK).json(doacao);
+        } catch (error) {
+            console.log(error);
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
+
+    async deletarDoacao(req, res) {
+        try {
+            const doacao = await Doacao.findById(req.params.id);
+            if (!doacao.user.equals(req.user._id))
+                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+
+            doacao.remove();
+            return res.sendStatus(HTTPStatus.NO_CONTENT).json(doacao);
+        } catch (error) {
+            console.log(error);
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
+
+    async atualizarDoacao(req, res) {
+        try {
+            const doacao = await Doacao.findById(req.params.id);
+            if (!doacao.user.equals(req.user._id))
+                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            
+            Object.keys(req.body).forEach(elem => doacao[elem] = req.body[elem]);
+
+            doacao.save();
+            
+            return res.status(HTTPStatus.OK).json(doacao);
+        } catch (error) {
+            console.log(error);
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
 }

@@ -109,12 +109,14 @@ UserSchema.methods = {
             _id: this._id,
             email: this.email,
             token: `Bearer ${this.createToken()}`,
+            tipo: this.tipo,
         };
     },
     toJSON() {
         return {
             _id: this._id,
             email: this.email,
+            tipo: this.tipo,
         };
     }
 };

@@ -6,9 +6,10 @@ const routes = new Router();
 
 routes.post('/', authJwt, pedidoController.cadastrar);
 routes.get('/', pedidoController.listarTodos);
-routes.get('/user', authJwt, pedidoController.listarPorUserId);
 routes.get('/:id', pedidoController.listarPorId);
+routes.put('/:id', authJwt, pedidoController.atualizarPedido);
 routes.delete('/:id', authJwt, pedidoController.deletarPedido);
-routes.post('/:id/atualizar', authJwt, pedidoController.atualizarSituacaoPedido);
+routes.get('/user', authJwt, pedidoController.listarPorUserId);
+routes.post('/:id/atualizarSituacao', authJwt, pedidoController.atualizarSituacaoPedido);
 
 module.exports = routes;
