@@ -8,5 +8,8 @@ routes.post('/', medicamentoController.cadastrar);
 routes.get('/', medicamentoController.listarTodos);
 routes.post('/:id/atualizarSituacao', medicamentoController.atualizarSituacaoMedicamento);
 routes.delete('/:id', authJwt, medicamentoController.remover);
+// Medicamentos Comerciais
+routes.post('/medicamentoscomerciais', medicamentoController.cadastrarComercial);
+routes.get('/medicamentoscomerciais', medicamentoController.listarMedicamentosComercial);
 
 module.exports = routes;
