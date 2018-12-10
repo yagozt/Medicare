@@ -117,6 +117,7 @@ UserSchema.methods = {
             _id: this._id,
             email: this.email,
             tipo: this.tipo,
+            dataCadastro: this.dataCadastro
         };
     }
 };
