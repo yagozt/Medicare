@@ -5,7 +5,7 @@ const defaultConfig = {
     PORT: process.env.PORT || 3000,
 };
 function envConfig(env) {
-    // env = env.trim();
+    env = env ? env.trim() : 'development';
     switch (env) {
         case 'development':
             return devConfig;

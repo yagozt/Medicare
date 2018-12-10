@@ -1,4 +1,5 @@
 const Medicamento = require('./medicamento.model');
+const MedicamentoComercial = require('./medicamentoComercial.model');
 const HTTPStatus = require('http-status');
 
 module.exports = {
@@ -12,10 +13,28 @@ module.exports = {
         }
     },
 
+    async cadastrarComercial(req, res) {
+        try {
+            const medicamentoApresentacao = await MedicamentoComercial.create(req.body);
+            return res.status(HTTPStatus.OK).json(medicamentoApresentacao);
+        } catch (error) {
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
+
     async listarTodos(req, res) {
         try {
-            const doacoes = await Medicamento.find({});
-            return res.status(HTTPStatus.OK).json(doacoes);
+            const medicamentos = await Medicamento.find({});
+            return res.status(HTTPStatus.OK).json(medicamentos);
+        } catch (error) {
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
+
+    async listarMedicamentosComercial(req, res) {
+        try {
+            const medicamentos = await MedicamentoComercial.find({}).populate('medicamento', 'nomeMedicamento');
+            return res.status(HTTPStatus.OK).json(medicamentos);
         } catch (error) {
             return res.status(HTTPStatus.BAD_REQUEST).json(error);
         }
