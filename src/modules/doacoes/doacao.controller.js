@@ -15,7 +15,10 @@ module.exports = {
 
     async listarTodos(req, res) {
         try {
-            const doacoes = await Doacao.find({});
+            const doacoes = await Doacao.find({}).populate({
+                path: 'medicamentoComercial',
+                populate: { path: 'medicamento' }
+            });
             return res.status(HTTPStatus.OK).json(doacoes);
         } catch (error) {
             return res.status(HTTPStatus.BAD_REQUEST).json(error);
@@ -38,7 +41,10 @@ module.exports = {
 
     async listarPorUsuario(req, res) {
         try {
-            const doacoes = await Doacao.find({ user: mongoose.Types.ObjectId(req.user.id) });
+            const doacoes = await Doacao.find({ user: mongoose.Types.ObjectId(req.user.id) }).populate({
+                path: 'medicamentoComercial',
+                populate: { path: 'medicamento' }
+            });
             return res.status(HTTPStatus.OK).json(doacoes);
         } catch (error) {
             console.log(error);
@@ -48,7 +54,10 @@ module.exports = {
 
     async listarPorId(req, res) {
         try {
-            const doacao = await Doacao.findById(req.params.id);
+            const doacao = await Doacao.findById(req.params.id).populate({
+                path: 'medicamentoComercial',
+                populate: { path: 'medicamento' }
+            });
             return res.status(HTTPStatus.OK).json(doacao);
         } catch (error) {
             console.log(error);

@@ -9,7 +9,7 @@ var DoacaoSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    medicamento: {
+    medicamentoComercial: {
         type: mongoose.Types.ObjectId,
         ref: 'MedicamentoComercial',
         required: true

@@ -2,14 +2,14 @@ const mongoose = require("mongoose"),
 Schema = mongoose.Schema;
 
 const PedidoSchema = new Schema({
-    medicamento: {
+    medicamentoComercial: {
         type: mongoose.Types.ObjectId,
         ref: 'MedicamentoComercial',
         required: true
     },
     quantidade: Number,
     nomeMedico: String,
-    crmMedico: String,
+    crmMedico: { type: String, default: '', },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'

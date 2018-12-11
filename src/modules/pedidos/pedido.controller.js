@@ -14,7 +14,10 @@ module.exports = {
 
     async listarTodos(req, res) {
         try {
-            const pedidos = await Pedido.find().populate('user').populate('medicamento');
+            const pedidos = await Pedido.find().populate('user').populate({
+                path: 'medicamentoComercial',
+                populate: { path: 'medicamento' }
+            });
             return res.status(HTTPStatus.OK).json(pedidos);
         } catch (e) {
             return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(e);
@@ -23,7 +26,10 @@ module.exports = {
 
     async listarPorUserId(req, res) {
         try {
-            const pedidos = await Pedido.find({ user: mongoose.Types.ObjectId(req.user.id) });
+            const pedidos = await Pedido.find({ user: mongoose.Types.ObjectId(req.user.id) }).populate({
+                path: 'medicamentoComercial',
+                populate: { path: 'medicamento' }
+            });
             return res.status(HTTPStatus.OK).json(pedidos);
         } catch (e) {
             return res.status(HTTPStatus.BAD_REQUEST).json(e);
@@ -32,7 +38,10 @@ module.exports = {
 
     async listarPorId(req, res) {
         try {
-            const pedidos = await Pedido.findById(req.params.id);
+            const pedidos = await Pedido.findById(req.params.id).populate({
+                path: 'medicamentoComercial',
+                populate: { path: 'medicamento' }
+            });
             return res.status(HTTPStatus.OK).json(pedidos);
         } catch (e) {
             console.log(e);
