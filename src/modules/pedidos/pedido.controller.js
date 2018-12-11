@@ -14,7 +14,7 @@ module.exports = {
 
     async listarTodos(req, res) {
         try {
-            const pedidos = await Pedido.find().populate('user');
+            const pedidos = await Pedido.find().populate('user').populate('medicamento');
             return res.status(HTTPStatus.OK).json(pedidos);
         } catch (e) {
             return res.status(HTTPStatus.INTERNAL_SERVER_ERROR).json(e);

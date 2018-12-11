@@ -1,6 +1,7 @@
 const Medicamento = require('./medicamento.model');
 const MedicamentoComercial = require('./medicamentoComercial.model');
 const HTTPStatus = require('http-status');
+const queryString = require('querystring');
 
 module.exports = {
     async cadastrar(req, res) {
@@ -33,7 +34,10 @@ module.exports = {
 
     async listarMedicamentosComercial(req, res) {
         try {
-            const medicamentos = await MedicamentoComercial.find({}).populate('medicamento', 'nomeMedicamento');
+            let medicamento = req.query.medicamento || '';
+            let reg = new RegExp('^'+medicamento, "i");
+            const medicamentos = await MedicamentoComercial.find({nome: reg})
+            .populate('medicamento', 'nomeMedicamento');
             return res.status(HTTPStatus.OK).json(medicamentos);
         } catch (error) {
             return res.status(HTTPStatus.BAD_REQUEST).json(error);

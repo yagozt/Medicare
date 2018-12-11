@@ -9,13 +9,10 @@ var DoacaoSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    nomeMedicamento: {
-        type: String,
-        required: true,
-    },
-    tamanho: {
-        type: Number,
-        required: true,
+    medicamento: {
+        type: mongoose.Types.ObjectId,
+        ref: 'MedicamentoComercial',
+        required: true
     },
     status: {
         type: String,

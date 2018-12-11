@@ -47,19 +47,11 @@ const UserSchema = new Schema({
             message: '{VALUE} is not a valid password!',
         },
     },
-    documento: {
-        type: String,
-        trim: true,
-        required: [true, "Documento é necessário!"]
-    },
     rg: {
         type: String,
         trim: true
     },
     endereco: {
-        type: String
-    },
-    descricao: {
         type: String
     },
     tipo: {

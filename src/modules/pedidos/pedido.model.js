@@ -2,10 +2,14 @@ const mongoose = require("mongoose"),
 Schema = mongoose.Schema;
 
 const PedidoSchema = new Schema({
-    nomeRemedio: String,
-    tamanho: Number,
+    medicamento: {
+        type: mongoose.Types.ObjectId,
+        ref: 'MedicamentoComercial',
+        required: true
+    },
     quantidade: Number,
     nomeMedico: String,
+    crmMedico: String,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
