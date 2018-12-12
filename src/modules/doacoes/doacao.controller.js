@@ -1,6 +1,7 @@
 const Doacao = require('./doacao.model');
 const HTTPStatus = require('http-status');
 const query = require('querystring');
+const mongoose = require('mongoose');
 
 module.exports = {
     async cadastrar(req, res) {
