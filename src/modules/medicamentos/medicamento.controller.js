@@ -1,7 +1,6 @@
 const Medicamento = require('./medicamento.model');
 const MedicamentoComercial = require('./medicamentoComercial.model');
 const HTTPStatus = require('http-status');
-const queryString = require('querystring');
 
 module.exports = {
     async cadastrar(req, res) {
