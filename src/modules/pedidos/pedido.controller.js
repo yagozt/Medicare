@@ -69,9 +69,9 @@ module.exports = {
             if (!pedido) {
                 return res.sendStatus(HTTPStatus.NOT_FOUND);
             }
-            if (!pedido.user.equals(req.user._id)) {
-                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
-            }
+            //if (!pedido.user.equals(req.user._id)) {
+            //    return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+           // }
 
             res.status(HTTPStatus.OK).json(pedido);
         } catch (error) {
