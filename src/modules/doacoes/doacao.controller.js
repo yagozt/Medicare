@@ -68,8 +68,6 @@ module.exports = {
     async deletarDoacao(req, res) {
         try {
             const doacao = await Doacao.findById(req.params.id);
-            if (!doacao.user.equals(req.user._id))
-                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
 
             doacao.remove();
             return res.sendStatus(HTTPStatus.NO_CONTENT).json(doacao);
@@ -82,8 +80,6 @@ module.exports = {
     async atualizarDoacao(req, res) {
         try {
             const doacao = await Doacao.findById(req.params.id);
-            if (!doacao.user.equals(req.user._id))
-                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
             
             Object.keys(req.body).forEach(elem => doacao[elem] = req.body[elem]);
 
