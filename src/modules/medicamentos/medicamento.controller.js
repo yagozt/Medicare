@@ -70,4 +70,18 @@ module.exports = {
             return res.status(HTTPStatus.BAD_REQUEST).json(error);
         }
     },
+
+    async removerMedicamentoComercial(req, res) {
+        try {
+            const medicamento = await MedicamentoComercial.findById(req.params.id);
+            // if (!medicamento._id.equals(req.user._id)) {
+            //     return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            // }
+            medicamento.remove();
+
+            return res.sendStatus(HTTPStatus.NO_CONTENT);
+        } catch (error) {
+            return res.status(HTTPStatus.BAD_REQUEST).json(error);
+        }
+    },
 }
