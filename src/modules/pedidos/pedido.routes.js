@@ -10,6 +10,6 @@ routes.get('/user', authJwt, pedidoController.listarPorUserId);
 routes.get('/:id', pedidoController.listarPorId);
 routes.put('/:id', authJwt, pedidoController.atualizarPedido);
 routes.delete('/:id', authJwt, pedidoController.deletarPedido);
-routes.post('/:id/atualizarSituacao', authJwt, pedidoController.atualizarSituacaoPedido);
+routes.post('/:id/atualizarSituacao', pedidoController.atualizarSituacaoPedido);
 
 module.exports = routes;
