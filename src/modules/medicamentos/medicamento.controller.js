@@ -60,9 +60,9 @@ module.exports = {
     async remover(req, res) {
         try {
             const medicamento = await Medicamento.findById(req.params.id);
-            if (!medicamento._id.equals(req.user._id)) {
-                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
-            }
+            // if (!medicamento._id.equals(req.user._id)) {
+            //     return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            // }
             medicamento.remove();
 
             return res.sendStatus(HTTPStatus.NO_CONTENT);
