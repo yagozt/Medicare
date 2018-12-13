@@ -52,8 +52,8 @@ module.exports = {
     async deletarPedido(req, res) {
         try {
             const pedido = await Pedido.findById(req.params.id);
-            if (!pedido.user.equals(req.user._id))
-                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            // if (!pedido.user.equals(req.user._id))
+            //     return res.sendStatus(HTTPStatus.UNAUTHORIZED);
             
             pedido.remove();
             return res.sendStatus(HTTPStatus.NO_CONTENT);
@@ -83,8 +83,8 @@ module.exports = {
     async atualizarPedido(req, res) {
         try {
             const doacao = await Doacao.findById(req.params.id);
-            if (!doacao.user.equals(req.user._id))
-                return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+            // if (!doacao.user.equals(req.user._id))
+            //     return res.sendStatus(HTTPStatus.UNAUTHORIZED);
             
             Object.keys(req.body).forEach(elem => doacao[elem] = req.body[elem]);
 
