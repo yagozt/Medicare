@@ -5,9 +5,10 @@ constans = require('./config/constants'),
 middlewareConfig = require('./config/middleware'),
 apiRoutes = require('./modules');
 global.Object.conn = require('./config/database');
-
+var cors = require('cors'); 
 const app = express();
 
+app.use(cors());
 middlewareConfig(app);
 
 app.get('/', (req, res) => {
