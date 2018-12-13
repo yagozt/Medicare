@@ -15,7 +15,7 @@ module.exports = {
 
     async listarTodos(req, res) {
         try {
-            const doacoes = await Doacao.find({}).populate({
+            const doacoes = await Doacao.find({}).populate('user').populate({
                 path: 'medicamentoComercial',
                 populate: { path: 'medicamento' }
             });
